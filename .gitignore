@@ -5,6 +5,9 @@
 *.tfstate
 *.tfstate.*
 
+# lock hcl
+*.lock.hcl*
+
 # Crash log files
 crash.log
 crash.*.log
@@ -32,3 +35,10 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# vscode
+**/.vscode/*
+
+# ssh keys
+*.key
+*.pub
