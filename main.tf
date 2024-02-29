@@ -21,6 +21,13 @@ resource "aws_instance" "nginx-server" {
 	aws_security_group.nginx-server-sg.id
   ]
 
+  tags = {
+    Name        = "nginx-server"
+    Environment = "test"
+    Owner       = "ariel.molina@caosbinario.com"
+    Team        = "DevOps"
+    Project     = "webinar"
+  }
 }
 
 ####### ssh ####### 
@@ -29,6 +36,14 @@ resource "aws_instance" "nginx-server" {
 resource "aws_key_pair" "nginx-server-ssh" {
   key_name   = "nginx-server-ssh"
   public_key = file("nginx-server.key.pub")
+
+  tags = {
+    Name        = "nginx-server-ssh"
+    Environment = "test"
+    Owner       = "ariel.molina@caosbinario.com"
+    Team        = "DevOps"
+    Project     = "webinar"
+  }
 }
 
 ####### SG ####### 
@@ -55,5 +70,13 @@ resource "aws_security_group" "nginx-server-sg" {
     to_port          = 0
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name        = "nginx-server-sg"
+    Environment = "test"
+    Owner       = "ariel.molina@caosbinario.com"
+    Team        = "DevOps"
+    Project     = "webinar"
   }
 }
