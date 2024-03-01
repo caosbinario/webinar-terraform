@@ -47,3 +47,21 @@ output "nginx_qa_dns" {
   description = "DNS público de la instancia EC2"
   value       = module.nginx_server_qa.server_public_dns
 }
+
+##### Import
+
+# aws_instance.server-web:
+resource "aws_instance" "server-web" {
+    ami                                  = "ami-0440d3b780d96b29d"
+    instance_type                        = "t2.medium"
+    tags = {
+        Name        = "server-web"
+        Environment = "test"
+        Owner       = "ariel.molina@caosbinario.com"
+        Team        = "DevOps"
+        Project     = "webinar"
+    }
+    vpc_security_group_ids               = [
+        "sg-0d5b0d5e416f094c1",
+    ]
+}
